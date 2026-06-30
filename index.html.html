@@ -178,6 +178,64 @@ section { position: relative; z-index: 1; padding: 100px 5%; }
 .step-title { font-size: 16px; font-weight: 800; margin-bottom: 10px; color: var(--white); letter-spacing: 0.5px; }
 .step-desc { font-size: 13px; color: var(--white-60); line-height: 1.7; }
 
+.referral-box {
+  margin-top: 36px;
+  background: var(--bg2);
+  border: 1px solid var(--red-border);
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  position: relative;
+}
+.referral-box::before {
+  content: 'IMPORTANT — REGISTRATION DETAILS';
+  position: absolute;
+  top: -10px; left: 24px;
+  background: var(--bg2);
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--red-bright);
+  font-weight: 700;
+  padding: 0 8px;
+}
+.referral-item { display: flex; flex-direction: column; gap: 6px; }
+.referral-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--white-35); font-weight: 700; }
+.referral-value {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--white);
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.referral-value a { color: var(--red-bright); text-decoration: none; word-break: break-all; }
+.referral-value a:hover { text-decoration: underline; }
+.referral-code-tag {
+  background: var(--red);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 22px;
+  letter-spacing: 2px;
+  padding: 4px 14px;
+}
+.copy-btn {
+  background: var(--bg3);
+  border: 1px solid var(--white-15);
+  color: var(--white-60);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.copy-btn:hover { border-color: var(--red); color: var(--white); background: var(--red-dim); }
+
 /* PROFIT SPLIT */
 #split { background: var(--bg2); overflow: hidden; }
 
@@ -421,9 +479,25 @@ footer { background: #050505; border-top: 1px solid var(--red-border); position:
     <h2 class="section-title reveal">How It Works</h2>
     <p class="section-sub reveal">Three simple steps and your money starts working for you — no trading knowledge required.</p>
     <div class="steps-grid">
-      <div class="step-card reveal"><div class="step-num">01</div><span class="step-icon">🏦</span><h3 class="step-title">Open Your XM Account</h3><p class="step-desc">Register a free account on XM Broker. Complete verification, deposit a minimum of $100 USD, and you're ready.</p></div>
-      <div class="step-card reveal reveal-delay-1"><div class="step-num">02</div><span class="step-icon">🔗</span><h3 class="step-title">Copy My Trading Profile</h3><p class="step-desc">Search for my verified trader profile on XM's copy trading section. Click Copy and set your allocation amount.</p></div>
+      <div class="step-card reveal"><div class="step-num">01</div><span class="step-icon">🏦</span><h3 class="step-title">Open Your XM Account</h3><p class="step-desc">Register using <strong style="color:var(--white)">my referral link</strong> below. Complete verification, deposit a minimum of $100 USD, and you're ready.</p></div>
+      <div class="step-card reveal reveal-delay-1"><div class="step-num">02</div><span class="step-icon">🔗</span><h3 class="step-title">Add Partner Code</h3><p class="step-desc">While opening your investor / copy trading account, enter Partner Code <strong style="color:var(--red-bright)">FVQWB</strong> in the partner code section. This links your account to my trading profile.</p></div>
       <div class="step-card reveal reveal-delay-2"><div class="step-num">03</div><span class="step-icon">💰</span><h3 class="step-title">Earn Automatically</h3><p class="step-desc">Every trade I place is mirrored to your account instantly. You keep 60% of all profits. Withdraw anytime — no lock-in.</p></div>
+    </div>
+    <div class="referral-box reveal reveal-delay-2">
+      <div class="referral-item">
+        <span class="referral-label">Step 1 — Register With My Link</span>
+        <span class="referral-value">
+          <a href="https://affs.click/Lyblr" target="_blank">affs.click/Lyblr</a>
+          <button class="copy-btn" onclick="copyText('https://affs.click/Lyblr', this)">Copy</button>
+        </span>
+      </div>
+      <div class="referral-item">
+        <span class="referral-label">Step 2 — Enter Partner Code</span>
+        <span class="referral-value">
+          <span class="referral-code-tag">FVQWB</span>
+          <button class="copy-btn" onclick="copyText('FVQWB', this)">Copy</button>
+        </span>
+      </div>
     </div>
   </div>
 </section>
@@ -481,7 +555,8 @@ footer { background: #050505; border-top: 1px solid var(--red-border); position:
     <p class="section-eyebrow" style="text-align:center">Common Questions</p>
     <h2 class="section-title reveal" style="text-align:center;margin-bottom:48px">Frequently Asked Questions</h2>
     <div class="faq-grid">
-      <div class="faq-item reveal" onclick="toggleFaq(this)"><div class="faq-q"><span class="faq-q-text">Is my money safe with this service?</span><span class="faq-icon">+</span></div><div class="faq-a"><div class="faq-a-inner">Yes. Your funds are deposited in your own personal XM broker account. I only have copy trading permissions — I cannot withdraw, transfer, or access your capital in any way.</div></div></div>
+      <div class="faq-item reveal" onclick="toggleFaq(this)"><div class="faq-q"><span class="faq-q-text">How do I link my account to yours?</span><span class="faq-icon">+</span></div><div class="faq-a"><div class="faq-a-inner">Open your XM account using my referral link: affs.click/Lyblr. While setting up your investor / copy trading account, enter Partner Code <strong>FVQWB</strong> in the partner code section. This ensures your account is properly linked to my trading profile.</div></div></div>
+      <div class="faq-item reveal reveal-delay-1" onclick="toggleFaq(this)"><div class="faq-q"><span class="faq-q-text">Is my money safe with this service?</span><span class="faq-icon">+</span></div><div class="faq-a"><div class="faq-a-inner">Yes. Your funds are deposited in your own personal XM broker account. I only have copy trading permissions — I cannot withdraw, transfer, or access your capital in any way.</div></div></div>
       <div class="faq-item reveal reveal-delay-1" onclick="toggleFaq(this)"><div class="faq-q"><span class="faq-q-text">How do I receive my profit?</span><span class="faq-icon">+</span></div><div class="faq-a"><div class="faq-a-inner">Profits are credited directly to your XM account balance automatically. You can withdraw to your bank account or e-wallet via XM's withdrawal system at any time.</div></div></div>
       <div class="faq-item reveal" onclick="toggleFaq(this)"><div class="faq-q"><span class="faq-q-text">What happens if there is a loss?</span><span class="faq-icon">+</span></div><div class="faq-a"><div class="faq-a-inner">No performance fee is charged on losing trades. My 40% is only deducted when a trade is profitable. Losses are shared proportionally to your allocation in the copy portfolio.</div></div></div>
       <div class="faq-item reveal reveal-delay-1" onclick="toggleFaq(this)"><div class="faq-q"><span class="faq-q-text">Do I need any trading experience?</span><span class="faq-icon">+</span></div><div class="faq-a"><div class="faq-a-inner">None at all. Once your XM account is set up and linked to my profile, everything is fully automated. You don't need to understand charts, indicators, or markets.</div></div></div>
@@ -582,6 +657,14 @@ footer { background: #050505; border-top: 1px solid var(--red-border); position:
 <script>
 function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
 function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+function copyText(text, btn) {
+  navigator.clipboard.writeText(text).then(() => {
+    const original = btn.textContent;
+    btn.textContent = 'Copied!';
+    setTimeout(() => { btn.textContent = original; }, 1500);
+  });
+}
 
 function toggleFaq(el) {
   const isOpen = el.classList.contains('open');
