@@ -696,19 +696,40 @@ function submitForm() {
   const msg = document.getElementById('f-msg').value || '';
   const country = document.getElementById('f-country').value || '';
 
-  const waMsg = encodeURIComponent(
-    `*New TFT Copy Trading Registration*\n\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nCountry: ${country}\nInvestment: ${amount}\nXM Account: ${xm}\nMessage: ${msg || 'None'}`
-  );
+  const btn = document.querySelector('.form-btn');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
 
-  fetch('https://formspree.io/f/tftcopytrading', {
+  fetch('https://formspree.io/f/mnjkgvaq', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify({ name, phone, email, country, investment: amount, xm_account: xm, message: msg, _replyto: email, _subject: `New TFT Copy Trading Registration — ${name}` })
-  }).catch(() => {});
-
-  document.getElementById('formContent').style.display = 'none';
-  document.getElementById('formSuccess').style.display = 'flex';
-  setTimeout(() => { window.open(`https://wa.me/917207765325?text=${waMsg}`, '_blank'); }, 800);
+    body: JSON.stringify({
+      name,
+      whatsapp: phone,
+      email,
+      country,
+      investment_amount: amount,
+      xm_account: xm,
+      message: msg,
+      _replyto: email,
+      _subject: `New TFT Copy Trading Registration — ${name}`
+    })
+  })
+  .then(res => {
+    if (res.ok) {
+      document.getElementById('formContent').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'flex';
+    } else {
+      btn.textContent = 'Submit — I\'ll Contact You on WhatsApp →';
+      btn.disabled = false;
+      alert('Something went wrong. Please try again or contact us on WhatsApp.');
+    }
+  })
+  .catch(() => {
+    btn.textContent = 'Submit — I\'ll Contact You on WhatsApp →';
+    btn.disabled = false;
+    alert('Something went wrong. Please check your connection and try again.');
+  });
 }
 </script>
 </body>
